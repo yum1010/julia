@@ -103,7 +103,9 @@ for n in 2:30
     faces=makePointsData(n)[2]
     S=MatrixSpace(ZZ, n*n, n*n)
     L=S(laplacian(faces))
-    #L=laplacian(faces)
+    L=reduce_mod(L,2)
+    cansolve(L,ones(n*n))
+    #L=laplacian(faces) 
     #d = (round(Int128,det(L)))
     d = det(L)
     if d%2 == 0
